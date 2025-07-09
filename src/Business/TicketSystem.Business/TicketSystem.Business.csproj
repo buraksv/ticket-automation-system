@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
+		<LangVersion>13</LangVersion>
+		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+		<NoWarn>1701;1702;4014;1819;1051</NoWarn>
+		<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="obj\**" />
+		<EmbeddedResource Remove="obj\**" />
+		<None Remove="obj\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Common\TicketSystem.Common\TicketSystem.Common.csproj" />
+		<ProjectReference Include="..\..\Common\TicketSystem.Dto\TicketSystem.Dto.csproj" />
+		<ProjectReference Include="..\..\DataAccess\TicketSystem.DataAccess.Contract\TicketSystem.DataAccess.Contract.csproj" />
+		<ProjectReference Include="..\TicketSystem.Business.Contract\TicketSystem.Business.Contract.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Helpers\" />
+		<Folder Include="Validators\SystemSettingsValidators\" />
+		<Folder Include="ServiceRegistration\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Gronio.Utility.Extensions" Version="1.0.0" />
+		<PackageReference Include="Gronio.Web.Helpers" Version="1.0.0" />
+		<PackageReference Include="Gronio.Api.ResponseWrapper" Version="1.0.0" />
+		<PackageReference Include="Mapster" Version="7.4.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.6" />
+	</ItemGroup>
+
+</Project>

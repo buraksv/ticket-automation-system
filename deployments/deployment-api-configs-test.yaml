@@ -1,0 +1,16 @@
+replicas: 1
+minreplica: 1
+maxreplica: 3
+memory: "300Mi"
+maxmemory: "600Mi"
+cpu: "150m"
+maxcpu: "300m"
+registryserver: ##docker_registry_server##
+service:
+  name: "##service_name##"
+  namespace: "ticket-automation-system"
+  endpoint: "prod-ticketsystem-api.k8s.local"
+  buildnumber: ##buildnumber##
+env:
+  aspnetcoreEnvironment: "Production"
+  environment: "production"
