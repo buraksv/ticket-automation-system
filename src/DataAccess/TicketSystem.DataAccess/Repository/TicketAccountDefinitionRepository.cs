@@ -41,8 +41,7 @@ internal sealed class TicketAccountDefinitionRepository : RepositoryFactory<Tick
         var filter = PredicateBuilder.True<TicketAccountDefinition>();
         if (request.SearchTerm.IsNotNullOrEmptyAndWhiteSpace())
         {
-            filter = filter.And(x => x.Name.ToLower().Contains(request.SearchTerm.ToLower()));
-            filter = filter.Or(x => x.Surname.ToLower().Contains(request.SearchTerm.ToLower()));
+            filter = filter.And(x => $"{x.Name.ToLower()} {x.Surname.ToLower()}".ToLower().Contains(request.SearchTerm.ToLower()));
             filter = filter.Or(x => x.Id.ToString() == request.SearchTerm);
         }
 

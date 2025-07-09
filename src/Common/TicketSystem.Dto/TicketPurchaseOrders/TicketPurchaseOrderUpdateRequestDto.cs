@@ -13,10 +13,10 @@ public sealed class TicketPurchaseOrderUpdateRequestDto : IDto
     public int Id { get; set; } 
     public string Name { get; set; }
     public short TeamId { get; set; }
-    public TicketSystemTypeEnum TicketSystemType { get; set; }
+    public TicketSystemTypeEnum TicketSystem { get; set; }
     public short TicketPlaceId { get; set; }
     public string TicketEventId { get; set; }
-    public DateTime EventDate { get; set; }
+    public DateTime EventTime { get; set; }
     public DateTime AutomationRunTime { get; set; }
     public bool IsActive { get; set; }
 }
