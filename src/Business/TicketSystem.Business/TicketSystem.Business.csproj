@@ -27,6 +27,7 @@
 
 	<ItemGroup>
 		<Folder Include="Helpers\" />
+		<Folder Include="Services\" />
 		<Folder Include="Validators\SystemSettingsValidators\" />
 		<Folder Include="ServiceRegistration\" />
 	</ItemGroup>

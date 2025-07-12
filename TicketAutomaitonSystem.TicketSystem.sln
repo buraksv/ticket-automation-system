@@ -33,6 +33,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketSystem.DataAccess.Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketSystem.DataAccess.Entity", "src\DataAccess\TicketSystem.DataAccess.Entity\TicketSystem.DataAccess.Entity.csproj", "{373A721D-6FB0-4DC0-BEA8-53E68273590B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workers", "Workers", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketAutomationSystem.TicketReservationWorker", "src\Workers\TicketAutomationSystem.TicketReservationWorker\TicketAutomationSystem.TicketReservationWorker.csproj", "{5CC59E9D-A6F8-4E6C-8E82-50AEC74DBF9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +87,10 @@ Global
 		{373A721D-6FB0-4DC0-BEA8-53E68273590B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{373A721D-6FB0-4DC0-BEA8-53E68273590B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{373A721D-6FB0-4DC0-BEA8-53E68273590B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CC59E9D-A6F8-4E6C-8E82-50AEC74DBF9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CC59E9D-A6F8-4E6C-8E82-50AEC74DBF9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CC59E9D-A6F8-4E6C-8E82-50AEC74DBF9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CC59E9D-A6F8-4E6C-8E82-50AEC74DBF9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,6 +107,7 @@ Global
 		{EFD8FC07-B10A-495D-8671-CE899C8CE4CD} = {D71CF8C4-0F38-4BAC-9C09-B9E45D483947}
 		{AF7CAAE5-3194-4B7F-9A67-AB6FA5177AD4} = {D71CF8C4-0F38-4BAC-9C09-B9E45D483947}
 		{373A721D-6FB0-4DC0-BEA8-53E68273590B} = {D71CF8C4-0F38-4BAC-9C09-B9E45D483947}
+		{5CC59E9D-A6F8-4E6C-8E82-50AEC74DBF9E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B06C62E8-274D-4512-A6CC-4E516E861D8D}

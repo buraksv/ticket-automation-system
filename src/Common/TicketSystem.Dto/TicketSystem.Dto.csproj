@@ -29,4 +29,9 @@
 	  <ProjectReference Include="..\TicketSystem.Enums\TicketSystem.Enums.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Services\BiletiniAl\" />
+	  <Folder Include="Services\PassoLig\" />
+	</ItemGroup>
+
 </Project>
