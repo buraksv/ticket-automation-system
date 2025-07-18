@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using Microsoft.Playwright;
 
 namespace TicketAutomationSystem.TicketReservationWorker;
 
@@ -16,66 +17,57 @@ public class Worker : BackgroundService
     {
         while (!stoppingToken.IsCancellationRequested)
         {
-            string username = "buraksavaskan@gmail.com";
-            string password = "951214Gs!";
-            string captchaGuid = "c2d295d2-2b7b-40f9-80e8-cc382fdbf478";
+            var rnd = new Random();
 
-            string encryptedUserName = CryptoHelper.EncryptUserName(username, captchaGuid);
-            string encryptedPassword = CryptoHelper.EncryptUserName(password, captchaGuid);
-            Console.WriteLine(encryptedUserName);
-            Console.WriteLine(encryptedPassword);
-        }
-    }
-}
+            string username = "....";
+            string password = "....";
 
-public static class CryptoHelper
-{
-    public static string EncryptUserName(string userName, string captchaGuid)
-    {
-        // 1. Key: captchaGuid'in "-" karakterleri silinir, ilk 16 karakter alınır
-        string keyStr = captchaGuid.Replace("-", "").Substring(0, 16);
-        byte[] key = Encoding.UTF8.GetBytes(keyStr);
+            using var playwright = await Playwright.CreateAsync();
 
-        // 2. IV: 16 byte'lık random veri
-        byte[] iv = new byte[16];
-        using (var rng = RandomNumberGenerator.Create())
-        {
-            rng.GetBytes(iv);
-        }
-
-        // 3. PKCS7 padding ile plaintext'i hazırla
-        byte[] plainBytes = PadPkcs7(Encoding.UTF8.GetBytes(userName), 16);
-
-        // 4. AES-128-CBC ile şifrele
-        byte[] encrypted;
-        using (var aes = Aes.Create())
-        {
-            aes.Key = key;
-            aes.IV = iv;
-            aes.Mode = CipherMode.CBC;
-            aes.Padding = PaddingMode.None; // Padding'i kendimiz yaptık!
-
-            using (var encryptor = aes.CreateEncryptor())
+            var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             {
-                encrypted = encryptor.TransformFinalBlock(plainBytes, 0, plainBytes.Length);
-            }
+                Headless = false,
+                SlowMo = 50,
+            });
+            var context = await browser.NewContextAsync(new BrowserNewContextOptions
+            {
+                UserAgent
+                    = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36",
+                ViewportSize = new ViewportSize { Width = 1920, Height = 1080 },
+                Locale = "tr-TR",
+                ScreenSize = new ScreenSize { Width = 1920, Height = 1080 },
+                DeviceScaleFactor = 1.0f,
+                IsMobile = false,
+                HasTouch = false,
+            });
+
+            var page = await context.NewPageAsync();
+
+            var url
+                = "https://passo.com.tr/tr/oauth?oauthClientId=e56bf1e4-0c46-3332-c3ca-803789069727&oauthClientVerifier=4108a9918b8c0a98c2baf4cfd1caf527ea58b12d6a17ed09e140aafbd2f7d279&utcTime=20250714213703&identifier=3fb97105-6c79-4c04-80b4-d2682c9f8e6f";
+
+            Console.WriteLine("Sayfa yükleniyor: " + url);
+            await page.GotoAsync(url);
+
+            var responseTask = page.WaitForResponseAsync(r =>
+                r.Url.Contains("/api/passoweb/oauth") && r.Status == 200);
+
+            Thread.Sleep(5_000);
+            await page.ClickAsync("input[autocomplete='username']");
+            await Task.Delay(500, stoppingToken);
+            await page.FillAsync("input[autocomplete='username']", username);
+
+            await Task.Delay(1500, stoppingToken);
+            await page.ClickAsync("input[type='password']");
+            await page.FillAsync("input[type='password']", password);
+
+            await page.WaitForSelectorAsync("button.black-btn:has-text(\"GİRİŞ\")");
+            await page.ClickAsync("button.black-btn:has-text(\"GİRİŞ\")");
+
+            var response = await responseTask;
+            var body = await response.TextAsync();
+
+            Thread.Sleep(500_000);
         }
-
-        // 5. IV ve ciphertext'i birleştir ve base64 encode et
-        byte[] combined = new byte[iv.Length + encrypted.Length];
-        Buffer.BlockCopy(iv, 0, combined, 0, iv.Length);
-        Buffer.BlockCopy(encrypted, 0, combined, iv.Length, encrypted.Length);
-        return Convert.ToBase64String(combined);
-    }
-
-    // PKCS7 padding fonksiyonu
-    public static byte[] PadPkcs7(byte[] data, int blockSize)
-    {
-        int pad = blockSize - (data.Length % blockSize);
-        byte[] padded = new byte[data.Length + pad];
-        Buffer.BlockCopy(data, 0, padded, 0, data.Length);
-        for (int i = data.Length; i < padded.Length; i++)
-            padded[i] = (byte)pad;
-        return padded;
     }
 }
