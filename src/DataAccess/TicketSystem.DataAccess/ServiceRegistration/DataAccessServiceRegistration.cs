@@ -7,8 +7,7 @@ namespace TicketSystem.DataAccess.ServiceRegistration;
 
 public static class DataAccessServiceRegistration
 {
-    public static IServiceCollection AddDataAccessServices(this IServiceCollection services,
-        ServiceLifetime lifetime = ServiceLifetime.Scoped)
+    public static IServiceCollection AddDataAccessServices(this IServiceCollection services, ServiceLifetime lifetime = ServiceLifetime.Scoped)
     {
         services.AddService<IAdminRepository, AdminRepository>(lifetime);
         services.AddService<IAdminLoginLogRepository, AdminLoginLogRepository>(lifetime);
@@ -21,6 +20,7 @@ public static class DataAccessServiceRegistration
         services.AddService<ITicketPurchaseOrderAccountRepository, TicketPurchaseOrderAccountRepository>(lifetime);
         services.AddService<ITicketPurchaseOrderRepository, TicketPurchaseOrderRepository>(lifetime);
         services.AddService<ITicketPurchaseOrderSystemLogRepository, TicketPurchaseOrderSystemLogRepository>(lifetime);
+        services.AddService<ITicketProviderSettingRepository, TicketProviderSettingRepository>(lifetime);
 
         return services;
     }

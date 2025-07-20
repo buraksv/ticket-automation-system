@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography;
-using System.Text;
-using Microsoft.Playwright;
+﻿using Microsoft.Playwright;
 
 namespace TicketAutomationSystem.TicketReservationWorker;
 

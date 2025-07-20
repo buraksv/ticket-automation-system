@@ -24,6 +24,7 @@ public static class BusinessServiceRegistration
         services.AddService<ITicketPurchaseOrderAccountManager, CccTicketPurchaseOrderAccountManager>(lifetime);
         services.AddService<ITicketPurchaseOrderManager, CccTicketPurchaseOrderManager>(lifetime);
         services.AddService<ITicketPurchaseOrderSystemLogManager, CccTicketPurchaseOrderSystemLogManager>(lifetime);
+        services.AddService<ITicketProviderSettingsManager, CccTicketProviderSettingsManager>(lifetime);
 
         return services;
     }

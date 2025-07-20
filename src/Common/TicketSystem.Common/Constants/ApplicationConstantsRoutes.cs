@@ -13,4 +13,5 @@ public static partial class ApplicationConstants
     public const string TicketPurchaseOrderAccountControllerBaseRoute = "ticket-purchase-order-accounts";
     public const string TicketPurchaseOrderControllerBaseRoute = "ticket-purchase-orders";
     public const string TicketPurchaseOrderSystemLogControllerBaseRoute = "ticket-purchase-order-system-logs";
+    public const string TicketProviderSettingsControllerBaseRoute = "ticket-provider-settings";
 }
