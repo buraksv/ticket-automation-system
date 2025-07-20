@@ -20,7 +20,7 @@ internal sealed class CccTicketProviderSettingsManager : TicketProviderSettingsM
         return base.UpdateAsync(request, cancellationToken);
     }
 
-    public override ValueTask<List<TicketProviderSettingListItemDto>> GetProviderSettingsAsync(TicketProviderSettingGetByProviderRequestDto request, CancellationToken cancellationToken = new())
+    public override ValueTask<Dictionary<string, string>> GetProviderSettingsAsync(TicketProviderSettingGetByProviderRequestDto request, CancellationToken cancellationToken = new())
     {
         ValidationHelper.Validate<TicketProviderSettingGetByProviderValidator>(request);
 

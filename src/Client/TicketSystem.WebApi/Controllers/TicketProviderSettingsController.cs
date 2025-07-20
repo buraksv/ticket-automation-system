@@ -24,7 +24,7 @@ public sealed class TicketProviderSettingsController : BaseController
     }
 
     [HttpGet("get-provider-settings")]
-    public async ValueTask<List<TicketProviderSettingListItemDto>> GetProviderSettingsAsync([FromQuery] TicketProviderSettingGetByProviderRequestDto request, CancellationToken cancellationToken = new())
+    public async ValueTask<Dictionary<string, string>> GetProviderSettingsAsync([FromQuery] TicketProviderSettingGetByProviderRequestDto request, CancellationToken cancellationToken = new())
     {
         return await _ticketProviderSettingsManager.GetProviderSettingsAsync(request, cancellationToken).ConfigureAwait(false);
     }

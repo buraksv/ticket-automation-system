@@ -47,9 +47,11 @@ internal class TicketProviderSettingsManager : ITicketProviderSettingsManager
         }
     }
 
-    public virtual async ValueTask<List<TicketProviderSettingListItemDto>> GetProviderSettingsAsync(TicketProviderSettingGetByProviderRequestDto request, CancellationToken cancellationToken = new())
+    public virtual async ValueTask<Dictionary<string, string>> GetProviderSettingsAsync(TicketProviderSettingGetByProviderRequestDto request, CancellationToken cancellationToken = new())
     {
-        return await TicketProviderSettingRepository.GetProviderSettingsAsync(request, cancellationToken);
+        var data = await TicketProviderSettingRepository.GetProviderSettingsAsync(request, cancellationToken);
+
+        return data.ToDictionary(x => x.Key, y => y.Value);
     }
 
     public virtual async ValueTask<TicketProviderSettingDetailDto> GetProviderSettingDetailAsync(TicketProviderSettingGetByKeyRequestDto request, CancellationToken cancellationToken = new())
