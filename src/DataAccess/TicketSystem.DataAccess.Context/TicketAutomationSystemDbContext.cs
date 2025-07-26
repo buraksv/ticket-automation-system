@@ -26,6 +26,7 @@ public sealed class TicketAutomationSystemDbContext : PostgreSqlDbContextBase
         modelBuilder.ApplyConfiguration(new TicketPlaceConfigurationsMappings());
         modelBuilder.ApplyConfiguration(new TicketPlaceMappings());
         modelBuilder.ApplyConfiguration(new TicketProviderSettingMappings());
+        modelBuilder.ApplyConfiguration(new TicketAccountDefinitionSettingDatabaseMappings());
 
         base.OnModelCreating(modelBuilder);
     }

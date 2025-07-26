@@ -1,6 +1,5 @@
 ﻿using Gronio.Utility.Helper.Validation;
 using TicketSystem.Business.Managers.Main;
-using TicketSystem.Business.Validators;
 using TicketSystem.Business.Validators.TicketProviderSettingValidator;
 using TicketSystem.DataAccess.Contract.Repository;
 using TicketSystem.Dto.TicketProviderSetting;

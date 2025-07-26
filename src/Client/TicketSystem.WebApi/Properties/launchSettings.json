@@ -2,7 +2,7 @@
   "profiles": {
     "TicketSystem.WebApi": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "scalar",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Production"

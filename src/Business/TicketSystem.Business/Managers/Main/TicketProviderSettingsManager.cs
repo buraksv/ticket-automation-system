@@ -29,7 +29,7 @@ internal class TicketProviderSettingsManager : ITicketProviderSettingsManager
                 Id = settingControl.Id,
                 Key = settingControl.Key,
                 Provider = settingControl.Provider,
-                Value = settingControl.Value,
+                Value = request.Value,
             };
 
             return await this.TicketProviderSettingRepository.UpdateAsync(entity, cancellationToken);

@@ -21,6 +21,7 @@ public static class DataAccessServiceRegistration
         services.AddService<ITicketPurchaseOrderRepository, TicketPurchaseOrderRepository>(lifetime);
         services.AddService<ITicketPurchaseOrderSystemLogRepository, TicketPurchaseOrderSystemLogRepository>(lifetime);
         services.AddService<ITicketProviderSettingRepository, TicketProviderSettingRepository>(lifetime);
+        services.AddService<ITicketAccountDefinitionSettingRepository, TicketAccountDefinitionSettingRepository>(lifetime);
 
         return services;
     }

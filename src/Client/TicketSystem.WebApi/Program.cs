@@ -77,6 +77,8 @@ builder.Services.AddDatabase(opt =>
     opt.UsePostgreSql<TicketAutomationSystemDbContext>(builder.Configuration.GetConnectionString("TicketAutomationSystem"), null, null);
 }, ServiceLifetime.Scoped);
 
+builder.Services.AddHttpClient();
+
 builder.Services.AddOpenApi();
 
 builder.Services.AddBusinessServices(ServiceLifetime.Scoped);

@@ -20,4 +20,5 @@ public sealed class TicketAccountDefinition : Entity<int>, IHasCreatedTimeEntity
 
     public Team Team { get; set; }
     public Admin Admin { get; set; }
+    public List<TicketAccountDefinitionSetting> TicketAccountDefinitionSettings { get; set; }
 }

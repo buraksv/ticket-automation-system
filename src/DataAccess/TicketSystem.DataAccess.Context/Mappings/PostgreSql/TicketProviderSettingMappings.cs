@@ -13,7 +13,7 @@ internal sealed class TicketProviderSettingMappings : PostgreSqlRecordBaseMap<Ti
     {
         builder.ToTable("TicketProviderSettings");
 
-        builder.HasIndex(x => new { x.Provider, x.Key }, "idx_unique_provider_settings");
+        builder.HasIndex(x => new { x.Provider, x.Key }, "idx_unique_provider_settings").IsUnique();
 
         builder.Property(x => x.Provider).IsRequired().HasComment(EnumExtensions.GetTextAllEnumKeyValues(",", TicketSystemTypeEnum.None));
         builder.Property(x => x.Key).IsRequired().HasMaxLength(128);

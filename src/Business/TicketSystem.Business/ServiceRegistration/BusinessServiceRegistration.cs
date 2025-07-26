@@ -3,7 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 using TicketSystem.Business.BusinessRules;
 using TicketSystem.Business.Contract.BusinessRules;
 using TicketSystem.Business.Contract.Managers;
+using TicketSystem.Business.Contract.Services;
 using TicketSystem.Business.Managers;
+using TicketSystem.Business.Services;
 
 namespace TicketSystem.Business.ServiceRegistration;
 
@@ -25,6 +27,9 @@ public static class BusinessServiceRegistration
         services.AddService<ITicketPurchaseOrderManager, CccTicketPurchaseOrderManager>(lifetime);
         services.AddService<ITicketPurchaseOrderSystemLogManager, CccTicketPurchaseOrderSystemLogManager>(lifetime);
         services.AddService<ITicketProviderSettingsManager, CccTicketProviderSettingsManager>(lifetime);
+
+
+        services.AddService<IPassoLigService, PassoLigService>(lifetime);
 
         return services;
     }
